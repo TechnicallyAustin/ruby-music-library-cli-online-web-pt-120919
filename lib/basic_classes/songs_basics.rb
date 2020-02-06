@@ -33,8 +33,7 @@ class Song
     
   end
   
-  # currently 35 passing with this code 
-  
+
   
  def self.find_by_name(song_name)
    @found = Song.all.find {|song| song.name == song_name}
@@ -43,17 +42,31 @@ class Song
 end
 
 def self.find_or_create_by_name(song_name)
-  if @found
-    @found
-  else
-    self.create(song_name)
-    @found.name
-    
-    #binding.pry 
+  self.find_by_name(song_name) || self.create(song_name)
+end
+
+
+  
+  def self.new_from_filename(file_name)
+    file_arr = []
+    file_name = file_name.chomp(".mp3")
+    file_arr = file_name.split(" - ")
+    art = file_arr[0] 
+    title = file_arr[1]
+    genre = file_arr[2]
+    Artist.find_or_create_by_name(art)
+    Genre.find_or_create_by_name(genre)
+    self.new(title,art,genre)
+    #binding.pry
   end
- 
- end
- 
+  
+  def self.create_from_filename(file_name)
+    dotmp3 = file_name[-1,--4]
+    file_name.delete(dotmp3)
+    self.create(newf)
+    save 
+  end
+  
  
   def save 
     @@all << self

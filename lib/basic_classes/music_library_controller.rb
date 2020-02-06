@@ -6,5 +6,10 @@ class MusicLibraryController
     MusicImporter.import
   end
   
+  def call
+    #welcomes user
+    #asks for input
+    #loops and ask for input until exit is typed
+  end
   
 end

@@ -48,7 +48,7 @@ end
 
   
   def self.new_from_filename(file_name)
-   array = filename.split(" - ")
+   array = file_name.split(" - ")
 
     song_name = array[1]
     artist_name = array[0]

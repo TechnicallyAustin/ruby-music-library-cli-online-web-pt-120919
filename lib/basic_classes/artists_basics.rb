@@ -1,5 +1,6 @@
-class Artist
-  attr_accessor :name, :artist, :genre
+ class Artist
+  attr_accessor :name
+  attr_reader :genre , :song 
   @@all = []
   def initialize(name)
     @name = name
@@ -17,10 +18,11 @@ class Artist
       @songs
     end
     
-    def add_song(song)
+    def add_song(song, genre = nil)
       
     if song.artist == nil
       song.artist = self
+      song.genre = genre 
     else
       nil
     end
@@ -33,7 +35,18 @@ class Artist
     song
 
     end
-      
+    
+    def genres
+      new_arr = []
+      songs.each do |song|
+      if new_arr.include?(song.genre)
+        nil
+      else 
+        new_arr << song.genre 
+      end
+    end
+      new_arr
+    end
   
   
   

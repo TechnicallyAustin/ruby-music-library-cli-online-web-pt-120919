@@ -12,8 +12,10 @@ def files
   end
   
   def import 
-    
-  
+    self.files.each do |file_name|
+      Song.new(file_name)
+    end
+  end
 
   
 

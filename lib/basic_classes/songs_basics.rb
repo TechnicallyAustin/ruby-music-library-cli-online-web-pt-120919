@@ -61,10 +61,8 @@ end
   end
   
   def self.create_from_filename(file_name)
-    dotmp3 = file_name[-1,--4]
-    file_name.delete(dotmp3)
-    self.create(newf)
-    save 
+    self.new_from_filename(file_name)
+
   end
   
  

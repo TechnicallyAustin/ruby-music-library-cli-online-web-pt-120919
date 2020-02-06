@@ -1,10 +1,11 @@
 class Song
-  attr_accessor :name, :genre, :artist
+  attr_accessor :name, :genre
+  attr_reader :artist 
   #attr_writer :artist
   @@all = []
-  def initialize(name, artist = Artist)
+  def initialize(name, artist = nil)
     @name = name
-    @artist = artist
+    self.artist=(artist)
     @@all << self.artist
   end
   
@@ -14,9 +15,12 @@ class Song
     song
   end
   
-  def self.artist=(artist)
-     @artist = artist.add_song(self)
+  
+  def artist=(artist)
+    @artist = artist  
+    #artist.add_song(self)
   end
+  
   # currently 35 passing with this code 
   
   

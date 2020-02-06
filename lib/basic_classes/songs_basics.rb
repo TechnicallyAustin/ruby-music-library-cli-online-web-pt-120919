@@ -48,23 +48,21 @@ end
 
   
   def self.new_from_filename(file_name)
-    file_arr = []
-    file_name = file_name.chomp(".mp3")
-    file_arr = file_name.split(" - ")
-    art = file_arr[0] 
-    title = file_arr[1]
-    genre = file_arr[2]
-    Artist.find_or_create_by_name(art)
-    Genre.find_or_create_by_name(genre)
-    self.new(title,art,genre)
-    #binding.pry
+   array = file_name.split(" - ")
+
+    song_name = array[1]
+    artist_name = array[0]
+    genre_name = array[2].split(".mp3").join
+
+    artist = Artist.find_or_create_by_name(artist_name)
+    genre = Genre.find_or_create_by_name(genre_name)
+    self.new(song_name, artist, genre)
+  
   end
   
   def self.create_from_filename(file_name)
-    dotmp3 = file_name[-1,--4]
-    file_name.delete(dotmp3)
-    self.create(newf)
-    save 
+    self.new_from_filename(file_name)
+
   end
   
  
